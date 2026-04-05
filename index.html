@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>L'Ora di Cena — Roma</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -14,6 +14,97 @@ body{
   font-family:'DM Sans',sans-serif;
   font-weight:300;
   overflow-x:hidden;
+}
+
+/* ── LOGO TESTO ── */
+.logo-text{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  line-height:1;
+  text-decoration:none;
+}
+.logo-text .l-top{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;
+  font-weight:300;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:rgba(240,234,216,0.6);
+}
+.logo-text .l-main{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.7rem;
+  font-weight:600;
+  letter-spacing:0.04em;
+  color:#f0ead8;
+  font-style:italic;
+}
+.logo-text .l-main span{
+  color:#c8402a;
+  font-style:normal;
+  font-weight:300;
+  font-size:1rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  margin:0 0.25em;
+}
+
+/* Nav version (smaller) */
+nav .logo-text .l-top{font-size:0.7rem;}
+nav .logo-text .l-main{font-size:1.2rem;}
+nav .logo-text .l-main span{font-size:0.72rem;}
+
+/* Hero version (big) */
+.hero-logo-text{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  line-height:1;
+  margin-bottom:2rem;
+  animation:fadeUp 1s ease both;
+}
+.hero-logo-text .hl-eyebrow{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(0.75rem,1.2vw,0.95rem);
+  font-weight:300;
+  letter-spacing:0.45em;
+  text-transform:uppercase;
+  color:rgba(240,234,216,0.45);
+  margin-bottom:0.5rem;
+}
+.hero-logo-text .hl-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.5rem,8vw,7rem);
+  font-weight:600;
+  font-style:italic;
+  letter-spacing:0.01em;
+  color:#f0ead8;
+  line-height:0.9;
+}
+.hero-logo-text .hl-di{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.2rem,2.5vw,2rem);
+  font-weight:300;
+  font-style:normal;
+  letter-spacing:0.35em;
+  text-transform:uppercase;
+  color:#c8402a;
+  margin:0.3rem 0;
+}
+.hero-logo-text .hl-cena{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,7vw,6rem);
+  font-weight:300;
+  font-style:italic;
+  letter-spacing:0.06em;
+  color:rgba(240,234,216,0.85);
+  line-height:0.9;
+}
+.hero-logo-text .hl-rule{
+  width:60px;height:1px;
+  background:#c8402a;
+  margin:1.2rem auto 0;
 }
 
 /* ── NAV ── */
@@ -29,13 +120,6 @@ nav.scrolled{
   border-bottom:1px solid rgba(255,255,255,0.06);
   padding:0.8rem 3rem;
 }
-.nav-logo{
-  height:64px;
-  object-fit:contain;
-  filter:drop-shadow(0 0 20px rgba(255,255,255,0.3));
-  transition:height 0.4s;
-}
-nav.scrolled .nav-logo{height:50px;}
 .nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
 .nav-links a{
   text-decoration:none;
@@ -77,29 +161,21 @@ nav.scrolled .nav-logo{height:50px;}
 @keyframes slowZoom{from{transform:scale(1);}to{transform:scale(1.1);}}
 .hero-overlay{
   position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(13,12,10,0.6) 0%,rgba(13,12,10,0.35) 40%,rgba(13,12,10,0.8) 100%);
+  background:linear-gradient(to bottom,rgba(13,12,10,0.65) 0%,rgba(13,12,10,0.4) 40%,rgba(13,12,10,0.82) 100%);
 }
 .hero-content{position:relative;z-index:2;padding:0 1.5rem;}
-.hero-logo-wrap{
-  margin-bottom:2rem;
-  animation:fadeUp 1s ease both;
-}
-.hero-logo-big{
-  width:min(460px,80vw);
-  filter:drop-shadow(0 4px 40px rgba(0,0,0,0.7)) brightness(1.15);
-}
 .hero-tagline{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.2rem,2.5vw,1.9rem);
+  font-size:clamp(1rem,2vw,1.5rem);
   font-style:italic;
-  color:rgba(240,234,216,0.85);
-  letter-spacing:0.06em;
+  color:rgba(240,234,216,0.7);
+  letter-spacing:0.1em;
   margin-bottom:2.5rem;
-  animation:fadeUp 1s 0.2s ease both;
+  animation:fadeUp 1s 0.3s ease both;
 }
 .hero-btns{
   display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
-  animation:fadeUp 1s 0.4s ease both;
+  animation:fadeUp 1s 0.5s ease both;
 }
 .btn-red{
   background:#c8402a;color:#fff;
@@ -110,7 +186,7 @@ nav.scrolled .nav-logo{height:50px;}
 }
 .btn-red:hover{background:#e04e35;transform:translateY(-2px);}
 .btn-ghost{
-  border:1px solid rgba(240,234,216,0.4);color:#f0ead8;
+  border:1px solid rgba(240,234,216,0.35);color:#f0ead8;
   padding:0.9rem 2.2rem;border-radius:100px;
   text-decoration:none;font-size:0.82rem;
   letter-spacing:0.14em;text-transform:uppercase;font-weight:500;
@@ -120,12 +196,12 @@ nav.scrolled .nav-logo{height:50px;}
 .scroll-hint{
   position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
   z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.4rem;
-  color:rgba(240,234,216,0.4);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(240,234,216,0.35);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;
   animation:bounce 2.5s infinite;
 }
 .scroll-hint::after{
   content:'';display:block;width:1px;height:36px;
-  background:linear-gradient(to bottom,rgba(240,234,216,0.4),transparent);
+  background:linear-gradient(to bottom,rgba(240,234,216,0.35),transparent);
 }
 @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(7px);}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
@@ -166,8 +242,7 @@ nav.scrolled .nav-logo{height:50px;}
 .menu-img{border-radius:6px;overflow:hidden;aspect-ratio:4/3;position:relative;}
 .menu-img img{width:100%;height:100%;object-fit:cover;display:block;}
 .price-block{
-  background:#1a1814;
-  border:1px solid rgba(200,64,42,0.25);
+  background:#1a1814;border:1px solid rgba(200,64,42,0.25);
   border-radius:8px;padding:2.5rem;margin-bottom:2rem;
 }
 .price-block .plabel{
@@ -181,10 +256,7 @@ nav.scrolled .nav-logo{height:50px;}
 .price-number sup{font-size:0.35em;vertical-align:super;color:#c8402a;}
 .price-desc{font-size:0.88rem;color:rgba(240,234,216,0.45);margin-top:0.6rem;line-height:1.7;}
 .menu-features{display:flex;flex-direction:column;gap:0.8rem;}
-.menu-feature{
-  display:flex;align-items:center;gap:0.8rem;
-  font-size:0.88rem;color:rgba(240,234,216,0.6);
-}
+.menu-feature{display:flex;align-items:center;gap:0.8rem;font-size:0.88rem;color:rgba(240,234,216,0.6);}
 .menu-feature::before{content:'';width:20px;height:1px;background:#c8402a;flex-shrink:0;}
 .menu-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
 .mcard{
@@ -197,15 +269,9 @@ nav.scrolled .nav-logo{height:50px;}
   font-family:'Cormorant Garamond',serif;
   font-size:3rem;font-weight:300;color:rgba(200,64,42,0.12);line-height:1;margin-bottom:0.8rem;
 }
-.mcard h4{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.3rem;font-weight:400;color:#f0ead8;margin-bottom:1rem;
-}
+.mcard h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:#f0ead8;margin-bottom:1rem;}
 .mcard ul{list-style:none;display:flex;flex-direction:column;gap:0.45rem;}
-.mcard ul li{
-  font-size:0.85rem;color:rgba(240,234,216,0.5);
-  padding-left:1rem;position:relative;
-}
+.mcard ul li{font-size:0.85rem;color:rgba(240,234,216,0.5);padding-left:1rem;position:relative;}
 .mcard ul li::before{content:'–';position:absolute;left:0;color:#c8402a;}
 
 /* ── GALLERY ── */
@@ -229,35 +295,21 @@ nav.scrolled .nav-logo{height:50px;}
 
 /* ── AMBIENTE ── */
 .ambient-section{padding:7rem 2rem;background:#111009;}
-.ambient-inner{
-  max-width:1100px;margin:0 auto;
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:5rem;align-items:center;
-}
-.ambient-imgs{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:10px;
-}
+.ambient-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.ambient-imgs{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .ai-big{grid-column:1/3;height:240px;border-radius:6px;overflow:hidden;}
 .ai-sm{height:200px;border-radius:6px;overflow:hidden;}
 .ai-big img,.ai-sm img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;}
 .ai-big:hover img,.ai-sm:hover img{transform:scale(1.05);}
 .ambient-text p{color:rgba(240,234,216,0.5);font-size:0.95rem;line-height:1.9;margin-bottom:1.2rem;}
 .perks{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;}
-.perk{
-  display:flex;align-items:flex-start;gap:1rem;
-  padding:1rem 1.2rem;background:#1a1814;
-  border-radius:6px;border-left:2px solid #c8402a;
-}
+.perk{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.2rem;background:#1a1814;border-radius:6px;border-left:2px solid #c8402a;}
 .perk-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
 .perk-text h5{font-size:0.88rem;font-weight:500;color:#f0ead8;margin-bottom:0.2rem;}
 .perk-text p{font-size:0.82rem;color:rgba(240,234,216,0.45);line-height:1.6;margin:0;}
 
 /* ── QUOTE ── */
-.quote-section{
-  padding:6rem 2rem;background:#c8402a;
-  text-align:center;position:relative;overflow:hidden;
-}
+.quote-section{padding:6rem 2rem;background:#c8402a;text-align:center;position:relative;overflow:hidden;}
 .quote-section::before{
   content:'"';font-family:'Cormorant Garamond',serif;
   font-size:20rem;color:rgba(0,0,0,0.1);
@@ -267,35 +319,25 @@ nav.scrolled .nav-logo{height:50px;}
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(1.6rem,3vw,2.5rem);
   font-style:italic;font-weight:300;color:#fff;
-  max-width:700px;margin:0 auto 1.2rem;line-height:1.45;
-  position:relative;z-index:1;
+  max-width:700px;margin:0 auto 1.2rem;line-height:1.45;position:relative;z-index:1;
 }
-.quote-section cite{
-  font-size:0.74rem;letter-spacing:0.2em;text-transform:uppercase;
-  color:rgba(255,255,255,0.6);font-style:normal;font-weight:500;
-}
+.quote-section cite{font-size:0.74rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);font-style:normal;font-weight:500;}
 
 /* ── CONTATTI ── */
 .contact-section{padding:7rem 2rem;background:#0d0c0a;}
 .contact-inner{max-width:1100px;margin:0 auto;}
-.contact-grid{
-  display:grid;grid-template-columns:1.2fr 1fr 1fr;
-  gap:5rem;margin-top:4rem;
-}
-.c-brand img{
-  height:72px;object-fit:contain;margin-bottom:1.5rem;display:block;
-  filter:brightness(0) invert(1) opacity(0.75);
-}
-.c-brand p{font-size:0.9rem;color:rgba(240,234,216,0.4);line-height:1.9;max-width:260px;}
-.c-col h4{
-  font-size:0.68rem;letter-spacing:0.24em;text-transform:uppercase;
-  color:#c8402a;margin-bottom:1.5rem;font-weight:500;
-}
+.contact-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:5rem;margin-top:4rem;}
+
+/* Logo testuale nel footer info */
+.c-brand-logo{margin-bottom:1.5rem;}
+.c-brand-logo .logo-text .l-top{color:rgba(240,234,216,0.3);}
+.c-brand-logo .logo-text .l-main{font-size:1.6rem;color:rgba(240,234,216,0.75);}
+.c-brand-logo .logo-text .l-main span{color:#c8402a;}
+
+.c-brand p{font-size:0.9rem;color:rgba(240,234,216,0.38);line-height:1.9;max-width:260px;}
+.c-col h4{font-size:0.68rem;letter-spacing:0.24em;text-transform:uppercase;color:#c8402a;margin-bottom:1.5rem;font-weight:500;}
 .c-list{list-style:none;display:flex;flex-direction:column;gap:0.9rem;}
-.c-list li{
-  display:flex;align-items:flex-start;gap:0.8rem;
-  font-size:0.88rem;color:rgba(240,234,216,0.5);line-height:1.6;
-}
+.c-list li{display:flex;align-items:flex-start;gap:0.8rem;font-size:0.88rem;color:rgba(240,234,216,0.5);line-height:1.6;}
 .c-list li span:first-child{color:#c8402a;flex-shrink:0;}
 .c-list a{color:rgba(240,234,216,0.5);text-decoration:none;transition:color 0.2s;}
 .c-list a:hover{color:#f0ead8;}
@@ -306,11 +348,7 @@ nav.scrolled .nav-logo{height:50px;}
 .orari-tbl .chiuso td,.orari-tbl .chiuso td:last-child{color:rgba(240,234,216,0.2);}
 
 /* ── FOOTER ── */
-footer{
-  background:#080807;border-top:1px solid rgba(255,255,255,0.05);
-  padding:1.5rem 2rem;text-align:center;
-  font-size:0.75rem;color:rgba(240,234,216,0.22);letter-spacing:0.08em;
-}
+footer{background:#080807;border-top:1px solid rgba(255,255,255,0.05);padding:1.5rem 2rem;text-align:center;font-size:0.75rem;color:rgba(240,234,216,0.22);letter-spacing:0.08em;}
 footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
 
 /* ── REVEAL ── */
@@ -321,12 +359,7 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
 @media(max-width:960px){
   nav{padding:1rem 1.5rem;}
   nav.scrolled{padding:0.7rem 1.5rem;}
-  .nav-links{
-    display:none;flex-direction:column;
-    position:fixed;top:0;left:0;right:0;bottom:0;
-    background:rgba(13,12,10,0.98);
-    justify-content:center;align-items:center;gap:2.5rem;z-index:190;
-  }
+  .nav-links{display:none;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(13,12,10,0.98);justify-content:center;align-items:center;gap:2.5rem;z-index:190;}
   .nav-links.open{display:flex;}
   .nav-links a{font-size:1.1rem;}
   .hamburger{display:flex;z-index:210;}
@@ -340,12 +373,12 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
 }
 @media(max-width:600px){
   .strip{gap:0.4rem 1.5rem;}
-  .hero-logo-big{width:72vw;}
   .gallery-grid{grid-template-columns:1fr;grid-template-rows:auto;}
   .gallery-grid .gi{height:220px;}
   .gc{grid-column:auto;}
   .ambient-imgs{grid-template-columns:1fr;}
   .ai-big,.ai-sm{grid-column:auto;height:200px;}
+  nav .logo-text .l-main{font-size:1rem;}
 }
 </style>
 </head>
@@ -353,7 +386,10 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
 
 <!-- NAV -->
 <nav id="nav">
-  <img class="nav-logo" src="logo_ora_di_cena.jpg" alt="L'Ora di Cena"/>
+  <a href="#" class="logo-text">
+    <span class="l-top">L'ora</span>
+    <span class="l-main">di <span>Cena</span></span>
+  </a>
   <button class="hamburger" id="ham" aria-label="menu">
     <span></span><span></span><span></span>
   </button>
@@ -371,8 +407,12 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-logo-wrap">
-      <img class="hero-logo-big" src="logo_ora_di_cena.jpg" alt="L'Ora di Cena"/>
+    <div class="hero-logo-text">
+      <span class="hl-eyebrow">Ristorante · Roma</span>
+      <span class="hl-name">L'Ora</span>
+      <span class="hl-di">di</span>
+      <span class="hl-cena">Cena</span>
+      <div class="hl-rule"></div>
     </div>
     <p class="hero-tagline">Pinsa Romana &nbsp;·&nbsp; Menù No Stop &nbsp;·&nbsp; Ogni Sera</p>
     <div class="hero-btns">
@@ -489,24 +529,15 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
       <div class="perks">
         <div class="perk">
           <span class="perk-icon">💰</span>
-          <div class="perk-text">
-            <h5>Prezzi onesti</h5>
-            <p>€15 a persona, tutto incluso. Zero sorprese nel conto.</p>
-          </div>
+          <div class="perk-text"><h5>Prezzi onesti</h5><p>€15 a persona, tutto incluso. Zero sorprese nel conto.</p></div>
         </div>
         <div class="perk">
           <span class="perk-icon">🍕</span>
-          <div class="perk-text">
-            <h5>Pinsa artigianale</h5>
-            <p>Impasto a lunga lievitazione, leggero e digeribile.</p>
-          </div>
+          <div class="perk-text"><h5>Pinsa artigianale</h5><p>Impasto a lunga lievitazione, leggero e digeribile.</p></div>
         </div>
         <div class="perk">
           <span class="perk-icon">🌿</span>
-          <div class="perk-text">
-            <h5>Terrazza esterna</h5>
-            <p>Cena all'aperto sul viale alberato, estate e primavera.</p>
-          </div>
+          <div class="perk-text"><h5>Terrazza esterna</h5><p>Cena all'aperto sul viale alberato, estate e primavera.</p></div>
         </div>
       </div>
     </div>
@@ -528,7 +559,12 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
     </div>
     <div class="contact-grid">
       <div class="c-brand reveal">
-        <img src="logo_ora_di_cena.jpg" alt="logo"/>
+        <div class="c-brand-logo">
+          <a href="#" class="logo-text">
+            <span class="l-top">L'ora</span>
+            <span class="l-main">di <span>Cena</span></span>
+          </a>
+        </div>
         <p>Ristorante con menù No Stop. Pinse illimitate, primi della tradizione e taglieri generosi a prezzo fisso, ogni sera.</p>
       </div>
       <div class="c-col reveal">
@@ -558,7 +594,7 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
 </section>
 
 <footer>
-  <p>© 2026 L'Ora di Cena · Roma · <a href="https://maps.app.goo.gl/AMKAv5CXJKBZFCGo7" target="_blank" rel="noopener">Google Maps</a></p>
+  <p>© 2025 L'Ora di Cena · Roma · <a href="https://maps.app.goo.gl/AMKAv5CXJKBZFCGo7" target="_blank" rel="noopener">Google Maps</a></p>
 </footer>
 
 <script>
