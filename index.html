@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>L'Ora di Cena — Roma</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#0d0c0a;
+  color:#f0ead8;
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 3rem;
+  transition:background 0.4s,padding 0.4s;
+}
+nav.scrolled{
+  background:rgba(13,12,10,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  padding:0.8rem 3rem;
+}
+.nav-logo{
+  height:64px;
+  object-fit:contain;
+  filter:drop-shadow(0 0 20px rgba(255,255,255,0.3));
+  transition:height 0.4s;
+}
+nav.scrolled .nav-logo{height:50px;}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{
+  text-decoration:none;
+  color:rgba(240,234,216,0.7);
+  font-size:0.78rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  font-weight:500;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:#f0ead8;}
+.nav-cta{
+  background:#c8402a !important;
+  color:#fff !important;
+  padding:0.55rem 1.4rem;
+  border-radius:100px;
+  font-size:0.76rem !important;
+  letter-spacing:0.14em !important;
+}
+.nav-cta:hover{background:#e04e35 !important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:#f0ead8;transition:0.3s;}
+
+/* ── HERO ── */
+.hero{
+  position:relative;
+  height:100vh;min-height:600px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('SnapInsta_to_620411737_18005126396693275_4928049283162309398_n.jpg');
+  background-size:cover;background-position:center;
+  animation:slowZoom 18s ease-in-out infinite alternate;
+}
+@keyframes slowZoom{from{transform:scale(1);}to{transform:scale(1.1);}}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(13,12,10,0.6) 0%,rgba(13,12,10,0.35) 40%,rgba(13,12,10,0.8) 100%);
+}
+.hero-content{position:relative;z-index:2;padding:0 1.5rem;}
+.hero-logo-wrap{
+  margin-bottom:2rem;
+  animation:fadeUp 1s ease both;
+}
+.hero-logo-big{
+  width:min(460px,80vw);
+  filter:drop-shadow(0 4px 40px rgba(0,0,0,0.7)) brightness(1.15);
+}
+.hero-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.2rem,2.5vw,1.9rem);
+  font-style:italic;
+  color:rgba(240,234,216,0.85);
+  letter-spacing:0.06em;
+  margin-bottom:2.5rem;
+  animation:fadeUp 1s 0.2s ease both;
+}
+.hero-btns{
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  animation:fadeUp 1s 0.4s ease both;
+}
+.btn-red{
+  background:#c8402a;color:#fff;
+  padding:0.9rem 2.2rem;border-radius:100px;
+  text-decoration:none;font-size:0.82rem;
+  letter-spacing:0.14em;text-transform:uppercase;font-weight:500;
+  transition:background 0.25s,transform 0.2s;
+}
+.btn-red:hover{background:#e04e35;transform:translateY(-2px);}
+.btn-ghost{
+  border:1px solid rgba(240,234,216,0.4);color:#f0ead8;
+  padding:0.9rem 2.2rem;border-radius:100px;
+  text-decoration:none;font-size:0.82rem;
+  letter-spacing:0.14em;text-transform:uppercase;font-weight:500;
+  transition:border-color 0.25s,transform 0.2s;
+}
+.btn-ghost:hover{border-color:#f0ead8;transform:translateY(-2px);}
+.scroll-hint{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.4rem;
+  color:rgba(240,234,216,0.4);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;
+  animation:bounce 2.5s infinite;
+}
+.scroll-hint::after{
+  content:'';display:block;width:1px;height:36px;
+  background:linear-gradient(to bottom,rgba(240,234,216,0.4),transparent);
+}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(7px);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── STRIP ── */
+.strip{
+  background:#c8402a;
+  padding:0.9rem 2rem;
+  display:flex;justify-content:center;align-items:center;
+  gap:0 3rem;flex-wrap:wrap;row-gap:0.5rem;
+}
+.strip-item{
+  font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;
+  font-weight:500;color:#fff;display:flex;align-items:center;gap:0.6rem;
+}
+.strip-item::before{content:'';width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.5);flex-shrink:0;}
+
+/* ── COMMONS ── */
+.section-label{
+  font-size:0.7rem;letter-spacing:0.28em;text-transform:uppercase;
+  font-weight:500;color:#c8402a;margin-bottom:1rem;display:block;
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,4vw,3.4rem);
+  font-weight:300;line-height:1.1;
+  color:#f0ead8;margin-bottom:1.5rem;
+}
+.section-title em{font-style:italic;color:rgba(240,234,216,0.5);}
+
+/* ── MENU ── */
+.menu-section{padding:7rem 2rem;background:#111009;}
+.menu-inner{max-width:1100px;margin:0 auto;}
+.menu-top{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:center;margin-bottom:5rem;
+}
+.menu-img{border-radius:6px;overflow:hidden;aspect-ratio:4/3;position:relative;}
+.menu-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.price-block{
+  background:#1a1814;
+  border:1px solid rgba(200,64,42,0.25);
+  border-radius:8px;padding:2.5rem;margin-bottom:2rem;
+}
+.price-block .plabel{
+  font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(240,234,216,0.4);margin-bottom:0.7rem;
+}
+.price-number{
+  font-family:'Cormorant Garamond',serif;
+  font-size:5rem;font-weight:300;line-height:1;color:#f0ead8;
+}
+.price-number sup{font-size:0.35em;vertical-align:super;color:#c8402a;}
+.price-desc{font-size:0.88rem;color:rgba(240,234,216,0.45);margin-top:0.6rem;line-height:1.7;}
+.menu-features{display:flex;flex-direction:column;gap:0.8rem;}
+.menu-feature{
+  display:flex;align-items:center;gap:0.8rem;
+  font-size:0.88rem;color:rgba(240,234,216,0.6);
+}
+.menu-feature::before{content:'';width:20px;height:1px;background:#c8402a;flex-shrink:0;}
+.menu-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.mcard{
+  background:#1a1814;border:1px solid rgba(255,255,255,0.06);
+  border-radius:8px;padding:2rem;
+  transition:border-color 0.3s,transform 0.3s;
+}
+.mcard:hover{border-color:rgba(200,64,42,0.4);transform:translateY(-5px);}
+.mcard-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3rem;font-weight:300;color:rgba(200,64,42,0.12);line-height:1;margin-bottom:0.8rem;
+}
+.mcard h4{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;font-weight:400;color:#f0ead8;margin-bottom:1rem;
+}
+.mcard ul{list-style:none;display:flex;flex-direction:column;gap:0.45rem;}
+.mcard ul li{
+  font-size:0.85rem;color:rgba(240,234,216,0.5);
+  padding-left:1rem;position:relative;
+}
+.mcard ul li::before{content:'–';position:absolute;left:0;color:#c8402a;}
+
+/* ── GALLERY ── */
+.gallery-section{padding:7rem 2rem;background:#0d0c0a;}
+.gallery-inner{max-width:1200px;margin:0 auto;}
+.gallery-head{margin-bottom:3rem;}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-template-rows:280px 280px;
+  gap:10px;
+}
+.gi{overflow:hidden;border-radius:6px;position:relative;}
+.gi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease;}
+.gi:hover img{transform:scale(1.06);}
+.ga{grid-column:1/5;grid-row:1/2;}
+.gb{grid-column:5/8;grid-row:1/2;}
+.gc{grid-column:8/13;grid-row:1/3;}
+.gd{grid-column:1/4;grid-row:2/3;}
+.ge{grid-column:4/8;grid-row:2/3;}
+
+/* ── AMBIENTE ── */
+.ambient-section{padding:7rem 2rem;background:#111009;}
+.ambient-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:center;
+}
+.ambient-imgs{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.ai-big{grid-column:1/3;height:240px;border-radius:6px;overflow:hidden;}
+.ai-sm{height:200px;border-radius:6px;overflow:hidden;}
+.ai-big img,.ai-sm img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;}
+.ai-big:hover img,.ai-sm:hover img{transform:scale(1.05);}
+.ambient-text p{color:rgba(240,234,216,0.5);font-size:0.95rem;line-height:1.9;margin-bottom:1.2rem;}
+.perks{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;}
+.perk{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:1rem 1.2rem;background:#1a1814;
+  border-radius:6px;border-left:2px solid #c8402a;
+}
+.perk-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
+.perk-text h5{font-size:0.88rem;font-weight:500;color:#f0ead8;margin-bottom:0.2rem;}
+.perk-text p{font-size:0.82rem;color:rgba(240,234,216,0.45);line-height:1.6;margin:0;}
+
+/* ── QUOTE ── */
+.quote-section{
+  padding:6rem 2rem;background:#c8402a;
+  text-align:center;position:relative;overflow:hidden;
+}
+.quote-section::before{
+  content:'"';font-family:'Cormorant Garamond',serif;
+  font-size:20rem;color:rgba(0,0,0,0.1);
+  position:absolute;top:-3rem;left:2rem;line-height:1;pointer-events:none;
+}
+.quote-section blockquote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.6rem,3vw,2.5rem);
+  font-style:italic;font-weight:300;color:#fff;
+  max-width:700px;margin:0 auto 1.2rem;line-height:1.45;
+  position:relative;z-index:1;
+}
+.quote-section cite{
+  font-size:0.74rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.6);font-style:normal;font-weight:500;
+}
+
+/* ── CONTATTI ── */
+.contact-section{padding:7rem 2rem;background:#0d0c0a;}
+.contact-inner{max-width:1100px;margin:0 auto;}
+.contact-grid{
+  display:grid;grid-template-columns:1.2fr 1fr 1fr;
+  gap:5rem;margin-top:4rem;
+}
+.c-brand img{
+  height:72px;object-fit:contain;margin-bottom:1.5rem;display:block;
+  filter:brightness(0) invert(1) opacity(0.75);
+}
+.c-brand p{font-size:0.9rem;color:rgba(240,234,216,0.4);line-height:1.9;max-width:260px;}
+.c-col h4{
+  font-size:0.68rem;letter-spacing:0.24em;text-transform:uppercase;
+  color:#c8402a;margin-bottom:1.5rem;font-weight:500;
+}
+.c-list{list-style:none;display:flex;flex-direction:column;gap:0.9rem;}
+.c-list li{
+  display:flex;align-items:flex-start;gap:0.8rem;
+  font-size:0.88rem;color:rgba(240,234,216,0.5);line-height:1.6;
+}
+.c-list li span:first-child{color:#c8402a;flex-shrink:0;}
+.c-list a{color:rgba(240,234,216,0.5);text-decoration:none;transition:color 0.2s;}
+.c-list a:hover{color:#f0ead8;}
+.orari-tbl{width:100%;border-collapse:collapse;}
+.orari-tbl tr{border-bottom:1px solid rgba(255,255,255,0.05);}
+.orari-tbl td{padding:0.55rem 0;font-size:0.85rem;color:rgba(240,234,216,0.5);}
+.orari-tbl td:last-child{text-align:right;color:rgba(240,234,216,0.75);}
+.orari-tbl .chiuso td,.orari-tbl .chiuso td:last-child{color:rgba(240,234,216,0.2);}
+
+/* ── FOOTER ── */
+footer{
+  background:#080807;border-top:1px solid rgba(255,255,255,0.05);
+  padding:1.5rem 2rem;text-align:center;
+  font-size:0.75rem;color:rgba(240,234,216,0.22);letter-spacing:0.08em;
+}
+footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.on{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:1rem 1.5rem;}
+  nav.scrolled{padding:0.7rem 1.5rem;}
+  .nav-links{
+    display:none;flex-direction:column;
+    position:fixed;top:0;left:0;right:0;bottom:0;
+    background:rgba(13,12,10,0.98);
+    justify-content:center;align-items:center;gap:2.5rem;z-index:190;
+  }
+  .nav-links.open{display:flex;}
+  .nav-links a{font-size:1.1rem;}
+  .hamburger{display:flex;z-index:210;}
+  .menu-top{grid-template-columns:1fr;gap:3rem;}
+  .menu-cards{grid-template-columns:1fr;gap:1rem;}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px;}
+  .ga,.gb,.gc,.gd,.ge{grid-column:auto;grid-row:auto;}
+  .gc{grid-column:1/3;}
+  .ambient-inner{grid-template-columns:1fr;gap:3rem;}
+  .contact-grid{grid-template-columns:1fr;gap:3rem;}
+}
+@media(max-width:600px){
+  .strip{gap:0.4rem 1.5rem;}
+  .hero-logo-big{width:72vw;}
+  .gallery-grid{grid-template-columns:1fr;grid-template-rows:auto;}
+  .gallery-grid .gi{height:220px;}
+  .gc{grid-column:auto;}
+  .ambient-imgs{grid-template-columns:1fr;}
+  .ai-big,.ai-sm{grid-column:auto;height:200px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <img class="nav-logo" src="logo_ora_di_cena.jpg" alt="L'Ora di Cena"/>
+  <button class="hamburger" id="ham" aria-label="menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navlinks">
+    <li><a href="#menu" onclick="closeNav()">Menù</a></li>
+    <li><a href="#gallery" onclick="closeNav()">Galleria</a></li>
+    <li><a href="#ambiente" onclick="closeNav()">Il Locale</a></li>
+    <li><a href="#contatti" onclick="closeNav()">Contatti</a></li>
+    <li><a href="tel:+390000000000" class="nav-cta" onclick="closeNav()">Prenota</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-logo-wrap">
+      <img class="hero-logo-big" src="logo_ora_di_cena.jpg" alt="L'Ora di Cena"/>
+    </div>
+    <p class="hero-tagline">Pinsa Romana &nbsp;·&nbsp; Menù No Stop &nbsp;·&nbsp; Ogni Sera</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-red">Scopri il Menù</a>
+      <a href="#contatti" class="btn-ghost">Prenota un Tavolo</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Scorri</div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">Menù No Stop a prezzo fisso</div>
+  <div class="strip-item">Pinsa Romana Artigianale</div>
+  <div class="strip-item">Antipasti · Primi · Dolci</div>
+  <div class="strip-item">Terrazza Esterna</div>
+</div>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="menu-inner">
+    <div class="menu-top">
+      <div class="menu-img reveal">
+        <img src="SnapInsta_to_621728564_18071975825109416_5990080329249826098_n.jpg" alt="La nostra pinsa"/>
+      </div>
+      <div class="reveal">
+        <span class="section-label">Il nostro menù</span>
+        <h2 class="section-title">No Stop.<br/><em>Mangia quanto vuoi.</em></h2>
+        <div class="price-block">
+          <p class="plabel">Prezzo fisso a persona</p>
+          <div class="price-number"><sup>€</sup>15</div>
+          <p class="price-desc">Tutto incluso: antipasti, pinse illimitate, primo piatto e dolce. Bevande escluse.</p>
+        </div>
+        <div class="menu-features">
+          <div class="menu-feature">Pinsa Romana artigianale illimitata</div>
+          <div class="menu-feature">Antipasti a rotazione</div>
+          <div class="menu-feature">Primo piatto incluso</div>
+          <div class="menu-feature">Trancio dolce con Nutella</div>
+          <div class="menu-feature">Bambini fino a 5 anni: gratis</div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-cards">
+      <div class="mcard reveal">
+        <div class="mcard-num">01</div>
+        <h4>Antipasti &amp; Sfizi</h4>
+        <ul>
+          <li>Tagliere salumi misti</li>
+          <li>Stracciatella con noci e miele</li>
+          <li>Ciccioli croccanti</li>
+          <li>Pane di Ricco</li>
+          <li>Patatine fritte</li>
+        </ul>
+      </div>
+      <div class="mcard reveal">
+        <div class="mcard-num">02</div>
+        <h4>Pinsa Romana — Illimitata</h4>
+        <ul>
+          <li>Margherita &amp; Marinara classica</li>
+          <li>Salmone, rucola &amp; crema</li>
+          <li>Funghi, carciofi &amp; pesto</li>
+          <li>Pera, speck &amp; gorgonzola</li>
+          <li>Guanciale &amp; pecorino</li>
+          <li>Ricotta &amp; spinaci</li>
+          <li>Nutella (dolce)</li>
+        </ul>
+      </div>
+      <div class="mcard reveal">
+        <div class="mcard-num">03</div>
+        <h4>Primi &amp; Secondi</h4>
+        <ul>
+          <li>Carbonara della tradizione</li>
+          <li>Cacio e pepe al tartufo</li>
+          <li>Amatriciana &amp; Gricia</li>
+          <li>Hamburger di bovino</li>
+          <li>Salsiccia alla brace</li>
+          <li>Tagliata con rucola</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-head reveal">
+      <span class="section-label">Le nostre foto</span>
+      <h2 class="section-title">Dal forno al tavolo.</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gi ga"><img src="SnapInsta_to_622101914_18089048440851772_5691392878359278602_n.jpg" alt="Tagliere"/></div>
+      <div class="gi gb"><img src="SnapInsta_to_619606012_18091097860990790_1677370241987823720_n.jpg" alt="Carbonara"/></div>
+      <div class="gi gc"><img src="SnapInsta_to_628095169_18385405504158973_6050244939950744544_n.jpg" alt="Pinsa salmone"/></div>
+      <div class="gi gd"><img src="SnapInsta_to_634486484_18448960318109075_6697321687013077237_n.jpg" alt="Pinsa funghi"/></div>
+      <div class="gi ge"><img src="SnapInsta_to_620411737_18005126396693275_4928049283162309398_n.jpg" alt="Pinse varie"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- AMBIENTE -->
+<section class="ambient-section" id="ambiente">
+  <div class="ambient-inner">
+    <div class="ambient-imgs reveal">
+      <div class="ai-big"><img src="SnapInsta_to_624916965_18189985300351770_6142185111547906757_n__1_.jpg" alt="Sala interna"/></div>
+      <div class="ai-sm"><img src="SnapInsta_to_624929077_18328444336300352_1077775716647724863_n.jpg" alt="Terrazza"/></div>
+      <div class="ai-sm"><img src="SnapInsta_to_99423868_262733531591654_3788402390500114432_n.jpg" alt="Il locale"/></div>
+    </div>
+    <div class="ambient-text reveal">
+      <span class="section-label">Il locale</span>
+      <h2 class="section-title">Un posto dove <em>stare bene.</em></h2>
+      <p>Sala interna accogliente con la lavagna dei menù, l'orologio romano che segna sempre l'ora giusta e una terrazza esterna per le serate all'aperto.</p>
+      <p>Per famiglie, coppie, comitive — L'Ora di Cena è il posto dove si torna sempre volentieri.</p>
+      <div class="perks">
+        <div class="perk">
+          <span class="perk-icon">💰</span>
+          <div class="perk-text">
+            <h5>Prezzi onesti</h5>
+            <p>€15 a persona, tutto incluso. Zero sorprese nel conto.</p>
+          </div>
+        </div>
+        <div class="perk">
+          <span class="perk-icon">🍕</span>
+          <div class="perk-text">
+            <h5>Pinsa artigianale</h5>
+            <p>Impasto a lunga lievitazione, leggero e digeribile.</p>
+          </div>
+        </div>
+        <div class="perk">
+          <span class="perk-icon">🌿</span>
+          <div class="perk-text">
+            <h5>Terrazza esterna</h5>
+            <p>Cena all'aperto sul viale alberato, estate e primavera.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <blockquote>"Non è solo cena — è il momento in cui il tempo si ferma e il sapore comincia."</blockquote>
+  <cite>— L'Ora di Cena, Roma</cite>
+</section>
+
+<!-- CONTATTI -->
+<section class="contact-section" id="contatti">
+  <div class="contact-inner">
+    <div class="reveal">
+      <span class="section-label">Vieni a trovarci</span>
+      <h2 class="section-title">Prenota il tuo tavolo.</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="c-brand reveal">
+        <img src="logo_ora_di_cena.jpg" alt="logo"/>
+        <p>Ristorante con menù No Stop. Pinse illimitate, primi della tradizione e taglieri generosi a prezzo fisso, ogni sera.</p>
+      </div>
+      <div class="c-col reveal">
+        <h4>Informazioni</h4>
+        <ul class="c-list">
+          <li><span>📍</span><span>Roma, Lazio — Italia</span></li>
+          <li><span>📞</span><span><a href="tel:+390000000000">Chiama per prenotare</a></span></li>
+          <li><span>📷</span><span><a href="https://www.instagram.com" target="_blank" rel="noopener">@loradicena</a></span></li>
+          <li><span>🗺</span><span><a href="https://maps.app.goo.gl/AMKAv5CXJKBZFCGo7" target="_blank" rel="noopener">Apri su Google Maps</a></span></li>
+        </ul>
+      </div>
+      <div class="c-col reveal">
+        <h4>Orari</h4>
+        <table class="orari-tbl">
+          <tr class="chiuso"><td>Lunedì</td><td>Chiuso</td></tr>
+          <tr><td>Martedì</td><td>19:00–23:00</td></tr>
+          <tr><td>Mercoledì</td><td>19:00–23:00</td></tr>
+          <tr><td>Giovedì</td><td>19:00–23:00</td></tr>
+          <tr><td>Venerdì</td><td>19:00–23:30</td></tr>
+          <tr><td>Sabato</td><td>12:30–15:00 / 19:00–23:30</td></tr>
+          <tr><td>Domenica</td><td>12:30–15:00 / 19:00–23:00</td></tr>
+        </table>
+        <p style="margin-top:0.8rem;font-size:0.75rem;color:rgba(240,234,216,0.22);">* Orari indicativi — verifica sempre</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 L'Ora di Cena · Roma · <a href="https://maps.app.goo.gl/AMKAv5CXJKBZFCGo7" target="_blank" rel="noopener">Google Maps</a></p>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);});
+const ham=document.getElementById('ham');
+const nl=document.getElementById('navlinks');
+ham.addEventListener('click',()=>nl.classList.toggle('open'));
+function closeNav(){nl.classList.remove('open');}
+const revs=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*100);io.unobserve(e.target);}
+  });
+},{threshold:0.1});
+revs.forEach(r=>io.observe(r));
+</script>
+</body>
+</html>
