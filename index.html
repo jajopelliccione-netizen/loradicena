@@ -3,382 +3,238 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>L'Ora di Cena — Roma</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<title>L'Ora di Cena — Pinseria & Bisteccheria · Roma</title>
+<meta name="description" content="Pinseria e Bisteccheria a Roma, Via Flavio Stilicone 125. Menù No Stop a prezzo fisso. Pinsa Romana artigianale illimitata ogni sera."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  background:#0d0c0a;
-  color:#f0ead8;
-  font-family:'DM Sans',sans-serif;
-  font-weight:300;
-  overflow-x:hidden;
+html{scroll-behavior:smooth;font-size:16px;}
+body{background:#0d0c0a;color:#f0ead8;font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+:root{
+  --red:#c8402a;--red-light:#e04e35;--cream:#f0ead8;
+  --cream-dim:rgba(240,234,216,0.6);--cream-faint:rgba(240,234,216,0.35);
+  --dark:#0d0c0a;--dark2:#111009;--dark3:#1a1814;
+  --border:rgba(255,255,255,0.07);--tr:0.3s cubic-bezier(0.4,0,0.2,1);
 }
 
-/* ── LOGO TESTO ── */
-.logo-text{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  line-height:1;
-  text-decoration:none;
-}
-.logo-text .l-top{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.05rem;
-  font-weight:300;
-  letter-spacing:0.32em;
-  text-transform:uppercase;
-  color:rgba(240,234,216,0.6);
-}
-.logo-text .l-main{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.7rem;
-  font-weight:600;
-  letter-spacing:0.04em;
-  color:#f0ead8;
-  font-style:italic;
-}
-.logo-text .l-main span{
-  color:#c8402a;
-  font-style:normal;
-  font-weight:300;
-  font-size:1rem;
-  letter-spacing:0.18em;
-  text-transform:uppercase;
-  margin:0 0.25em;
-}
-
-/* Nav version (smaller) */
-nav .logo-text .l-top{font-size:0.7rem;}
-nav .logo-text .l-main{font-size:1.2rem;}
-nav .logo-text .l-main span{font-size:0.72rem;}
-
-/* Hero version (big) */
-.hero-logo-text{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  line-height:1;
-  margin-bottom:2rem;
-  animation:fadeUp 1s ease both;
-}
-.hero-logo-text .hl-eyebrow{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(0.75rem,1.2vw,0.95rem);
-  font-weight:300;
-  letter-spacing:0.45em;
-  text-transform:uppercase;
-  color:rgba(240,234,216,0.45);
-  margin-bottom:0.5rem;
-}
-.hero-logo-text .hl-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(3.5rem,8vw,7rem);
-  font-weight:600;
-  font-style:italic;
-  letter-spacing:0.01em;
-  color:#f0ead8;
-  line-height:0.9;
-}
-.hero-logo-text .hl-di{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.2rem,2.5vw,2rem);
-  font-weight:300;
-  font-style:normal;
-  letter-spacing:0.35em;
-  text-transform:uppercase;
-  color:#c8402a;
-  margin:0.3rem 0;
-}
-.hero-logo-text .hl-cena{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(3rem,7vw,6rem);
-  font-weight:300;
-  font-style:italic;
-  letter-spacing:0.06em;
-  color:rgba(240,234,216,0.85);
-  line-height:0.9;
-}
-.hero-logo-text .hl-rule{
-  width:60px;height:1px;
-  background:#c8402a;
-  margin:1.2rem auto 0;
-}
+/* ── LOGO ── */
+.logo-text{display:flex;flex-direction:column;align-items:flex-start;line-height:1;}
+.logo-text .l-top{font-family:'Cormorant Garamond',serif;font-size:0.68rem;font-weight:300;letter-spacing:0.36em;text-transform:uppercase;color:rgba(240,234,216,0.45);margin-bottom:0.1rem;}
+.logo-text .l-main{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;letter-spacing:0.04em;color:var(--cream);font-style:italic;}
+.logo-text .l-di{font-style:normal;font-weight:300;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin:0 0.18em;}
 
 /* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1.2rem 3rem;
-  transition:background 0.4s,padding 0.4s;
-}
-nav.scrolled{
-  background:rgba(13,12,10,0.95);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(255,255,255,0.06);
-  padding:0.8rem 3rem;
-}
-.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
-.nav-links a{
-  text-decoration:none;
-  color:rgba(240,234,216,0.7);
-  font-size:0.78rem;
-  letter-spacing:0.18em;
-  text-transform:uppercase;
-  font-weight:500;
-  transition:color 0.2s;
-}
-.nav-links a:hover{color:#f0ead8;}
-.nav-cta{
-  background:#c8402a !important;
-  color:#fff !important;
-  padding:0.55rem 1.4rem;
-  border-radius:100px;
-  font-size:0.76rem !important;
-  letter-spacing:0.14em !important;
-}
-.nav-cta:hover{background:#e04e35 !important;}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
-.hamburger span{display:block;width:22px;height:1.5px;background:#f0ead8;transition:0.3s;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.3rem 2.5rem;transition:background var(--tr),padding var(--tr),box-shadow var(--tr);}
+nav.scrolled{background:rgba(13,12,10,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--border);padding:0.85rem 2.5rem;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center;}
+.nav-links a{font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;color:var(--cream-dim);transition:color var(--tr);position:relative;}
+.nav-links a:not(.nav-cta)::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform var(--tr);}
+.nav-links a:not(.nav-cta):hover::after{transform:scaleX(1);}
+.nav-links a:hover{color:var(--cream);}
+.nav-cta{background:var(--red)!important;color:#fff!important;padding:0.52rem 1.4rem;border-radius:100px;font-size:0.73rem!important;letter-spacing:0.14em!important;transition:background var(--tr),transform var(--tr)!important;}
+.nav-cta:hover{background:var(--red-light)!important;transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;z-index:210;}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--cream);transition:transform 0.3s,opacity 0.3s;transform-origin:center;}
+.hamburger.active span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
 
 /* ── HERO ── */
-.hero{
-  position:relative;
-  height:100vh;min-height:600px;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  text-align:center;
-  overflow:hidden;
-}
-.hero-bg{
-  position:absolute;inset:0;
-  background-image:url('SnapInsta.to_620411737_18005126396693275_4928049283162309398_n.jpg');
-  background-size:cover;background-position:center;
-  animation:slowZoom 18s ease-in-out infinite alternate;
-}
-@keyframes slowZoom{from{transform:scale(1);}to{transform:scale(1.1);}}
-.hero-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(13,12,10,0.65) 0%,rgba(13,12,10,0.4) 40%,rgba(13,12,10,0.82) 100%);
-}
-.hero-content{position:relative;z-index:2;padding:0 1.5rem;}
-.hero-tagline{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1rem,2vw,1.5rem);
-  font-style:italic;
-  color:rgba(240,234,216,0.7);
-  letter-spacing:0.1em;
-  margin-bottom:2.5rem;
-  animation:fadeUp 1s 0.3s ease both;
-}
-.hero-btns{
-  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
-  animation:fadeUp 1s 0.5s ease both;
-}
-.btn-red{
-  background:#c8402a;color:#fff;
-  padding:0.9rem 2.2rem;border-radius:100px;
-  text-decoration:none;font-size:0.82rem;
-  letter-spacing:0.14em;text-transform:uppercase;font-weight:500;
-  transition:background 0.25s,transform 0.2s;
-}
-.btn-red:hover{background:#e04e35;transform:translateY(-2px);}
-.btn-ghost{
-  border:1px solid rgba(240,234,216,0.35);color:#f0ead8;
-  padding:0.9rem 2.2rem;border-radius:100px;
-  text-decoration:none;font-size:0.82rem;
-  letter-spacing:0.14em;text-transform:uppercase;font-weight:500;
-  transition:border-color 0.25s,transform 0.2s;
-}
-.btn-ghost:hover{border-color:#f0ead8;transform:translateY(-2px);}
-.scroll-hint{
-  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
-  z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.4rem;
-  color:rgba(240,234,216,0.35);font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;
-  animation:bounce 2.5s infinite;
-}
-.scroll-hint::after{
-  content:'';display:block;width:1px;height:36px;
-  background:linear-gradient(to bottom,rgba(240,234,216,0.35),transparent);
-}
-@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(7px);}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.hero{position:relative;height:100svh;min-height:600px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-image:url('SnapInsta.to_620411737_18005126396693275_4928049283162309398_n.jpg');background-size:cover;background-position:center;animation:slowZoom 20s ease-in-out infinite alternate;will-change:transform;}
+@keyframes slowZoom{from{transform:scale(1);}to{transform:scale(1.08);}}
+/* FIXED: Strong gradient overlay ensures text readability in all conditions */
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,12,10,0.75) 0%,rgba(13,12,10,0.55) 30%,rgba(13,12,10,0.65) 65%,rgba(13,12,10,0.90) 100%);}
+.hero-content{position:relative;z-index:2;padding:0 1.5rem;max-width:700px;}
+.hero-eyebrow{font-family:'Cormorant Garamond',serif;font-size:clamp(0.7rem,1.4vw,0.88rem);font-weight:300;letter-spacing:0.5em;text-transform:uppercase;color:rgba(240,234,216,0.6);margin-bottom:0.6rem;animation:fadeUp 0.9s ease both;}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,13vw,8.5rem);font-weight:600;font-style:italic;letter-spacing:0.01em;line-height:0.88;color:var(--cream);animation:fadeUp 0.9s 0.1s ease both;text-shadow:0 4px 40px rgba(0,0,0,0.7);}
+.hero-di{display:block;font-family:'Cormorant Garamond',serif;font-size:clamp(0.85rem,2.5vw,1.5rem);font-weight:300;font-style:normal;letter-spacing:0.55em;text-transform:uppercase;color:var(--red);margin:0.4rem 0 0.1rem;animation:fadeUp 0.9s 0.15s ease both;}
+.hero-cena{display:block;font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,10vw,6.5rem);font-weight:300;font-style:italic;letter-spacing:0.06em;color:rgba(240,234,216,0.85);line-height:0.9;animation:fadeUp 0.9s 0.18s ease both;text-shadow:0 4px 40px rgba(0,0,0,0.7);}
+.hero-rule{width:50px;height:1px;background:var(--red);margin:1.5rem auto 1.8rem;animation:fadeUp 0.9s 0.22s ease both;}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(0.95rem,2.2vw,1.3rem);font-style:italic;color:rgba(240,234,216,0.8);letter-spacing:0.06em;margin-bottom:2.5rem;animation:fadeUp 0.9s 0.3s ease both;text-shadow:0 2px 16px rgba(0,0,0,0.6);}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.9s 0.4s ease both;}
+.btn-red{background:var(--red);color:#fff;padding:1rem 2.2rem;border-radius:100px;font-size:0.8rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;transition:background var(--tr),transform var(--tr),box-shadow var(--tr);box-shadow:0 4px 24px rgba(200,64,42,0.4);}
+.btn-red:hover{background:var(--red-light);transform:translateY(-2px);box-shadow:0 6px 30px rgba(200,64,42,0.5);}
+.btn-ghost{border:1.5px solid rgba(240,234,216,0.45);color:var(--cream);padding:1rem 2.2rem;border-radius:100px;font-size:0.8rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;transition:border-color var(--tr),background var(--tr),transform var(--tr);backdrop-filter:blur(4px);}
+.btn-ghost:hover{border-color:var(--cream);background:rgba(240,234,216,0.08);transform:translateY(-2px);}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(240,234,216,0.3);font-size:0.63rem;letter-spacing:0.25em;text-transform:uppercase;}
+.scroll-line{width:1px;height:38px;background:linear-gradient(to bottom,rgba(240,234,216,0.3),transparent);animation:scrollPulse 2.2s ease-in-out infinite;}
+@keyframes scrollPulse{0%{transform:scaleY(0);transform-origin:top;opacity:0;}40%{transform:scaleY(1);transform-origin:top;opacity:1;}60%{transform:scaleY(1);transform-origin:bottom;opacity:1;}100%{transform:scaleY(0);transform-origin:bottom;opacity:0;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
 
 /* ── STRIP ── */
-.strip{
-  background:#c8402a;
-  padding:0.9rem 2rem;
-  display:flex;justify-content:center;align-items:center;
-  gap:0 3rem;flex-wrap:wrap;row-gap:0.5rem;
-}
-.strip-item{
-  font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;
-  font-weight:500;color:#fff;display:flex;align-items:center;gap:0.6rem;
-}
-.strip-item::before{content:'';width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.5);flex-shrink:0;}
+.strip{background:var(--red);padding:0.9rem 0;overflow:hidden;}
+.strip-track{display:flex;gap:3rem;white-space:nowrap;animation:marquee 24s linear infinite;}
+.strip-track:hover{animation-play-state:paused;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.strip-item{display:inline-flex;align-items:center;gap:0.65rem;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;color:#fff;flex-shrink:0;}
+.strip-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,0.45);}
 
-/* ── COMMONS ── */
-.section-label{
-  font-size:0.7rem;letter-spacing:0.28em;text-transform:uppercase;
-  font-weight:500;color:#c8402a;margin-bottom:1rem;display:block;
-}
-.section-title{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2.2rem,4vw,3.4rem);
-  font-weight:300;line-height:1.1;
-  color:#f0ead8;margin-bottom:1.5rem;
-}
-.section-title em{font-style:italic;color:rgba(240,234,216,0.5);}
+/* ── SECTION COMMONS ── */
+.section-label{display:block;font-size:0.67rem;letter-spacing:0.32em;text-transform:uppercase;font-weight:500;color:var(--red);margin-bottom:0.9rem;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:300;line-height:1.1;color:var(--cream);margin-bottom:1.5rem;}
+.section-title em{font-style:italic;color:rgba(240,234,216,0.42);}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease;}
+.reveal.on{opacity:1;transform:translateY(0);}
 
 /* ── MENU ── */
-.menu-section{padding:7rem 2rem;background:#111009;}
+.menu-section{padding:6rem 1.5rem;background:var(--dark2);}
 .menu-inner{max-width:1100px;margin:0 auto;}
-.menu-top{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:5rem;align-items:center;margin-bottom:5rem;
-}
-.menu-img{border-radius:6px;overflow:hidden;aspect-ratio:4/3;position:relative;}
-.menu-img img{width:100%;height:100%;object-fit:cover;display:block;}
-.price-block{
-  background:#1a1814;border:1px solid rgba(200,64,42,0.25);
-  border-radius:8px;padding:2.5rem;margin-bottom:2rem;
-}
-.price-block .plabel{
-  font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;
-  color:rgba(240,234,216,0.4);margin-bottom:0.7rem;
-}
-.price-number{
-  font-family:'Cormorant Garamond',serif;
-  font-size:5rem;font-weight:300;line-height:1;color:#f0ead8;
-}
-.price-number sup{font-size:0.35em;vertical-align:super;color:#c8402a;}
-.price-desc{font-size:0.88rem;color:rgba(240,234,216,0.45);margin-top:0.6rem;line-height:1.7;}
-.menu-features{display:flex;flex-direction:column;gap:0.8rem;}
-.menu-feature{display:flex;align-items:center;gap:0.8rem;font-size:0.88rem;color:rgba(240,234,216,0.6);}
-.menu-feature::before{content:'';width:20px;height:1px;background:#c8402a;flex-shrink:0;}
-.menu-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.mcard{
-  background:#1a1814;border:1px solid rgba(255,255,255,0.06);
-  border-radius:8px;padding:2rem;
-  transition:border-color 0.3s,transform 0.3s;
-}
-.mcard:hover{border-color:rgba(200,64,42,0.4);transform:translateY(-5px);}
-.mcard-num{
-  font-family:'Cormorant Garamond',serif;
-  font-size:3rem;font-weight:300;color:rgba(200,64,42,0.12);line-height:1;margin-bottom:0.8rem;
-}
-.mcard h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:#f0ead8;margin-bottom:1rem;}
-.mcard ul{list-style:none;display:flex;flex-direction:column;gap:0.45rem;}
-.mcard ul li{font-size:0.85rem;color:rgba(240,234,216,0.5);padding-left:1rem;position:relative;}
-.mcard ul li::before{content:'–';position:absolute;left:0;color:#c8402a;}
+.menu-top{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-bottom:4rem;}
+.menu-img{border-radius:12px;overflow:hidden;aspect-ratio:4/3;position:relative;}
+.menu-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease;}
+.menu-img:hover img{transform:scale(1.04);}
+.menu-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 60%,rgba(200,64,42,0.12));pointer-events:none;}
+.price-block{background:var(--dark3);border:1px solid rgba(200,64,42,0.2);border-radius:12px;padding:2rem 2.2rem;margin-bottom:1.8rem;position:relative;overflow:hidden;}
+.price-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--red),transparent);}
+.price-block .plabel{font-size:0.68rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(240,234,216,0.32);margin-bottom:0.5rem;}
+.price-number{font-family:'Cormorant Garamond',serif;font-size:5.5rem;font-weight:300;line-height:1;color:var(--cream);}
+.price-number sup{font-size:0.3em;vertical-align:super;color:var(--red);}
+.price-desc{font-size:0.87rem;color:rgba(240,234,216,0.4);margin-top:0.5rem;line-height:1.75;}
+.menu-features{display:flex;flex-direction:column;gap:0.7rem;}
+.menu-feature{display:flex;align-items:center;gap:0.9rem;font-size:0.87rem;color:rgba(240,234,216,0.55);}
+.menu-feature::before{content:'';width:18px;height:1px;background:var(--red);flex-shrink:0;}
+.menu-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.mcard{background:var(--dark3);border:1px solid var(--border);border-radius:12px;padding:2rem;transition:border-color var(--tr),transform var(--tr),box-shadow var(--tr);}
+.mcard:hover{border-color:rgba(200,64,42,0.35);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.3);}
+.mcard-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:rgba(200,64,42,0.1);line-height:1;margin-bottom:0.7rem;}
+.mcard h4{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--cream);margin-bottom:1rem;}
+.mcard ul{list-style:none;display:flex;flex-direction:column;gap:0.42rem;}
+.mcard ul li{font-size:0.84rem;color:rgba(240,234,216,0.46);padding-left:1.1rem;position:relative;line-height:1.5;}
+.mcard ul li::before{content:'–';position:absolute;left:0;color:var(--red);}
 
 /* ── GALLERY ── */
-.gallery-section{padding:7rem 2rem;background:#0d0c0a;}
+.gallery-section{padding:6rem 1.5rem;background:var(--dark);}
 .gallery-inner{max-width:1200px;margin:0 auto;}
-.gallery-head{margin-bottom:3rem;}
-.gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  grid-template-rows:280px 280px;
-  gap:10px;
-}
-.gi{overflow:hidden;border-radius:6px;position:relative;}
-.gi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease;}
-.gi:hover img{transform:scale(1.06);}
-.ga{grid-column:1/5;grid-row:1/2;}
-.gb{grid-column:5/8;grid-row:1/2;}
-.gc{grid-column:8/13;grid-row:1/3;}
-.gd{grid-column:1/4;grid-row:2/3;}
-.ge{grid-column:4/8;grid-row:2/3;}
+.gallery-head{margin-bottom:2.5rem;}
+.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:270px 270px;gap:8px;border-radius:14px;overflow:hidden;}
+.gi{overflow:hidden;position:relative;}
+.gi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.65s ease;}
+.gi:hover img{transform:scale(1.07);}
+.ga{grid-column:1/5;grid-row:1/2;}.gb{grid-column:5/8;grid-row:1/2;}.gc{grid-column:8/13;grid-row:1/3;}.gd{grid-column:1/4;grid-row:2/3;}.ge{grid-column:4/8;grid-row:2/3;}
 
 /* ── AMBIENTE ── */
-.ambient-section{padding:7rem 2rem;background:#111009;}
+.ambient-section{padding:6rem 1.5rem;background:var(--dark2);}
 .ambient-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-.ambient-imgs{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.ai-big{grid-column:1/3;height:240px;border-radius:6px;overflow:hidden;}
-.ai-sm{height:200px;border-radius:6px;overflow:hidden;}
+.ambient-imgs{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.ai-big{grid-column:1/3;height:260px;border-radius:12px;overflow:hidden;}
+.ai-sm{height:180px;border-radius:12px;overflow:hidden;}
 .ai-big img,.ai-sm img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s;}
 .ai-big:hover img,.ai-sm:hover img{transform:scale(1.05);}
-.ambient-text p{color:rgba(240,234,216,0.5);font-size:0.95rem;line-height:1.9;margin-bottom:1.2rem;}
-.perks{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;}
-.perk{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.2rem;background:#1a1814;border-radius:6px;border-left:2px solid #c8402a;}
-.perk-icon{font-size:1.1rem;flex-shrink:0;margin-top:2px;}
-.perk-text h5{font-size:0.88rem;font-weight:500;color:#f0ead8;margin-bottom:0.2rem;}
-.perk-text p{font-size:0.82rem;color:rgba(240,234,216,0.45);line-height:1.6;margin:0;}
+.ambient-text p{color:rgba(240,234,216,0.46);font-size:0.94rem;line-height:1.9;margin-bottom:1.2rem;}
+.perks{display:flex;flex-direction:column;gap:0.9rem;margin-top:2rem;}
+.perk{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.3rem;background:var(--dark3);border-radius:10px;border-left:2px solid var(--red);transition:transform var(--tr);}
+.perk:hover{transform:translateX(4px);}
+.perk-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.perk-text h5{font-size:0.87rem;font-weight:500;color:var(--cream);margin-bottom:0.2rem;}
+.perk-text p{font-size:0.81rem;color:rgba(240,234,216,0.4);line-height:1.6;margin:0;}
 
 /* ── QUOTE ── */
-.quote-section{padding:6rem 2rem;background:#c8402a;text-align:center;position:relative;overflow:hidden;}
-.quote-section::before{
-  content:'"';font-family:'Cormorant Garamond',serif;
-  font-size:20rem;color:rgba(0,0,0,0.1);
-  position:absolute;top:-3rem;left:2rem;line-height:1;pointer-events:none;
-}
-.quote-section blockquote{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.6rem,3vw,2.5rem);
-  font-style:italic;font-weight:300;color:#fff;
-  max-width:700px;margin:0 auto 1.2rem;line-height:1.45;position:relative;z-index:1;
-}
-.quote-section cite{font-size:0.74rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);font-style:normal;font-weight:500;}
+.quote-section{padding:5rem 2rem;background:var(--red);text-align:center;position:relative;overflow:hidden;}
+.quote-section::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:22rem;color:rgba(0,0,0,0.08);position:absolute;top:-4rem;left:0;line-height:1;pointer-events:none;font-style:italic;}
+.quote-section blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3.5vw,2.4rem);font-style:italic;font-weight:300;color:#fff;max-width:680px;margin:0 auto 1rem;line-height:1.45;position:relative;z-index:1;}
+.quote-section cite{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.52);font-style:normal;font-weight:500;}
+
+/* ── RECENSIONI ── */
+.reviews-section{padding:6rem 1.5rem;background:var(--dark);}
+.reviews-inner{max-width:1100px;margin:0 auto;}
+.reviews-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-bottom:3.5rem;}
+.rating-badge{display:flex;align-items:center;gap:0.8rem;margin-top:0.8rem;}
+.rating-stars{display:flex;gap:3px;}
+.star{color:var(--red);font-size:1.05rem;}
+.rating-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--cream);line-height:1;}
+.rating-count{font-size:0.76rem;color:rgba(240,234,216,0.35);letter-spacing:0.06em;}
+.reviews-btns{display:flex;gap:0.8rem;flex-wrap:wrap;align-items:center;}
+.btn-review-read{display:inline-flex;align-items:center;gap:0.55rem;border:1.5px solid rgba(200,64,42,0.45);color:var(--cream);padding:0.9rem 1.9rem;border-radius:100px;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;transition:all var(--tr);}
+.btn-review-read:hover{border-color:var(--red);background:rgba(200,64,42,0.1);}
+.btn-review-write{display:inline-flex;align-items:center;gap:0.55rem;background:var(--red);color:#fff;padding:0.9rem 1.9rem;border-radius:100px;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;transition:all var(--tr);box-shadow:0 4px 20px rgba(200,64,42,0.3);}
+.btn-review-write:hover{background:var(--red-light);transform:translateY(-2px);box-shadow:0 6px 28px rgba(200,64,42,0.4);}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.rcard{background:var(--dark3);border:1px solid var(--border);border-radius:12px;padding:1.8rem;transition:transform var(--tr),box-shadow var(--tr),border-color var(--tr);}
+.rcard:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(0,0,0,0.25);border-color:rgba(200,64,42,0.18);}
+.rcard-header{display:flex;align-items:center;gap:0.9rem;margin-bottom:1rem;}
+.rcard-avatar{width:40px;height:40px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;flex-shrink:0;}
+.rcard-name{font-size:0.88rem;font-weight:500;color:var(--cream);}
+.rcard-date{font-size:0.72rem;color:rgba(240,234,216,0.3);margin-top:1px;}
+.rcard-stars{display:flex;gap:2px;margin-bottom:0.9rem;}
+.rcard-stars .star{font-size:0.8rem;}
+.rcard-text{font-size:0.87rem;color:rgba(240,234,216,0.48);line-height:1.75;font-style:italic;}
+.rcard-text::before{content:'\201C';}
+.rcard-text::after{content:'\201D';}
+.reviews-source{text-align:center;margin-top:2.5rem;font-size:0.7rem;letter-spacing:0.14em;color:rgba(240,234,216,0.18);text-transform:uppercase;}
 
 /* ── CONTATTI ── */
-.contact-section{padding:7rem 2rem;background:#0d0c0a;}
+.contact-section{padding:6rem 1.5rem;background:var(--dark2);}
 .contact-inner{max-width:1100px;margin:0 auto;}
-.contact-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:5rem;margin-top:4rem;}
-
-/* Logo testuale nel footer info */
-.c-brand-logo{margin-bottom:1.5rem;}
-.c-brand-logo .logo-text .l-top{color:rgba(240,234,216,0.3);}
-.c-brand-logo .logo-text .l-main{font-size:1.6rem;color:rgba(240,234,216,0.75);}
-.c-brand-logo .logo-text .l-main span{color:#c8402a;}
-
-.c-brand p{font-size:0.9rem;color:rgba(240,234,216,0.38);line-height:1.9;max-width:260px;}
-.c-col h4{font-size:0.68rem;letter-spacing:0.24em;text-transform:uppercase;color:#c8402a;margin-bottom:1.5rem;font-weight:500;}
+.contact-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:4.5rem;margin-top:3.5rem;}
+.c-brand-logo{margin-bottom:1.4rem;}
+.c-brand p{font-size:0.9rem;color:rgba(240,234,216,0.34);line-height:1.9;max-width:260px;}
+.c-col h4{font-size:0.67rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--red);margin-bottom:1.4rem;font-weight:500;}
 .c-list{list-style:none;display:flex;flex-direction:column;gap:0.9rem;}
-.c-list li{display:flex;align-items:flex-start;gap:0.8rem;font-size:0.88rem;color:rgba(240,234,216,0.5);line-height:1.6;}
-.c-list li span:first-child{color:#c8402a;flex-shrink:0;}
-.c-list a{color:rgba(240,234,216,0.5);text-decoration:none;transition:color 0.2s;}
-.c-list a:hover{color:#f0ead8;}
+.c-list li{display:flex;align-items:flex-start;gap:0.8rem;font-size:0.87rem;color:rgba(240,234,216,0.46);line-height:1.6;}
+.c-icon{color:var(--red);flex-shrink:0;}
+.c-list a{color:rgba(240,234,216,0.46);transition:color var(--tr);}
+.c-list a:hover{color:var(--cream);}
 .orari-tbl{width:100%;border-collapse:collapse;}
-.orari-tbl tr{border-bottom:1px solid rgba(255,255,255,0.05);}
-.orari-tbl td{padding:0.55rem 0;font-size:0.85rem;color:rgba(240,234,216,0.5);}
-.orari-tbl td:last-child{text-align:right;color:rgba(240,234,216,0.75);}
-.orari-tbl .chiuso td,.orari-tbl .chiuso td:last-child{color:rgba(240,234,216,0.2);}
+.orari-tbl tr{border-bottom:1px solid rgba(255,255,255,0.04);}
+.orari-tbl td{padding:0.55rem 0;font-size:0.84rem;color:rgba(240,234,216,0.46);}
+.orari-tbl td:last-child{text-align:right;color:rgba(240,234,216,0.7);}
+.orari-tbl .chiuso td,.orari-tbl .chiuso td:last-child{color:rgba(240,234,216,0.16);}
+.orari-note{margin-top:0.7rem;font-size:0.7rem;color:rgba(240,234,216,0.16);}
+
+/* ── MAP ── */
+.map-section{height:240px;position:relative;overflow:hidden;background:var(--dark3);}
+.map-section iframe{width:100%;height:100%;border:0;filter:grayscale(80%) invert(90%) contrast(85%);}
+.map-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(13,12,10,0.35);transition:background var(--tr);}
+.map-overlay:hover{background:rgba(13,12,10,0.15);}
+.map-cta{background:var(--dark);color:var(--cream);padding:0.85rem 1.8rem;border-radius:100px;font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;border:1px solid var(--border);transition:background var(--tr),border-color var(--tr);}
+.map-cta:hover{background:var(--red);border-color:var(--red);}
 
 /* ── FOOTER ── */
-footer{background:#080807;border-top:1px solid rgba(255,255,255,0.05);padding:1.5rem 2rem;text-align:center;font-size:0.75rem;color:rgba(240,234,216,0.22);letter-spacing:0.08em;}
-footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
-
-/* ── REVEAL ── */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease;}
-.reveal.on{opacity:1;transform:translateY(0);}
+footer{background:#080807;border-top:1px solid rgba(255,255,255,0.04);padding:1.8rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;font-size:0.73rem;color:rgba(240,234,216,0.18);letter-spacing:0.06em;}
+footer a{color:rgba(200,64,42,0.5);transition:color var(--tr);}
+footer a:hover{color:var(--red);}
+.footer-social{display:flex;gap:1.2rem;}
+.footer-social a{color:rgba(240,234,216,0.18);font-size:0.73rem;letter-spacing:0.12em;text-transform:uppercase;transition:color var(--tr);}
+.footer-social a:hover{color:var(--red);}
 
 /* ── RESPONSIVE ── */
 @media(max-width:960px){
-  nav{padding:1rem 1.5rem;}
-  nav.scrolled{padding:0.7rem 1.5rem;}
-  .nav-links{display:none;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(13,12,10,0.98);justify-content:center;align-items:center;gap:2.5rem;z-index:190;}
+  nav{padding:1rem 1.2rem;}
+  nav.scrolled{padding:0.75rem 1.2rem;}
+  .nav-links{display:none;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(13,12,10,0.98);backdrop-filter:blur(20px);justify-content:center;align-items:center;gap:2.2rem;z-index:190;}
   .nav-links.open{display:flex;}
-  .nav-links a{font-size:1.1rem;}
-  .hamburger{display:flex;z-index:210;}
-  .menu-top{grid-template-columns:1fr;gap:3rem;}
+  .nav-links a{font-size:1.15rem;}
+  .hamburger{display:flex;}
+  .menu-top{grid-template-columns:1fr;gap:2.5rem;}
   .menu-cards{grid-template-columns:1fr;gap:1rem;}
   .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px;}
   .ga,.gb,.gc,.gd,.ge{grid-column:auto;grid-row:auto;}
   .gc{grid-column:1/3;}
   .ambient-inner{grid-template-columns:1fr;gap:3rem;}
-  .contact-grid{grid-template-columns:1fr;gap:3rem;}
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .reviews-grid{grid-template-columns:1fr 1fr;gap:1rem;}
+  .reviews-head{flex-direction:column;align-items:flex-start;}
 }
 @media(max-width:600px){
-  .strip{gap:0.4rem 1.5rem;}
+  nav{padding:0.9rem 1rem;}
+  .hero-name{font-size:clamp(3.5rem,16vw,5rem);}
+  .hero-cena{font-size:clamp(2.8rem,12vw,4rem);}
   .gallery-grid{grid-template-columns:1fr;grid-template-rows:auto;}
   .gallery-grid .gi{height:220px;}
   .gc{grid-column:auto;}
   .ambient-imgs{grid-template-columns:1fr;}
   .ai-big,.ai-sm{grid-column:auto;height:200px;}
-  nav .logo-text .l-main{font-size:1rem;}
+  .reviews-grid{grid-template-columns:1fr;}
+  .reviews-btns{flex-direction:column;width:100%;}
+  .btn-review-read,.btn-review-write{justify-content:center;text-align:center;}
+  footer{flex-direction:column;text-align:center;}
+}
+@media(max-width:400px){
+  .btn-red,.btn-ghost{padding:0.9rem 1.5rem;font-size:0.76rem;}
 }
 </style>
 </head>
@@ -386,19 +242,19 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="logo-text">
+  <a href="#" class="logo-text" aria-label="L'Ora di Cena">
     <span class="l-top">L'ora</span>
-    <span class="l-main">di <span>Cena</span></span>
+    <span class="l-main">di<span class="l-di">·</span>Cena</span>
   </a>
-  <button class="hamburger" id="ham" aria-label="menu">
+  <button class="hamburger" id="ham" aria-label="Apri menu">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="navlinks">
     <li><a href="#menu" onclick="closeNav()">Menù</a></li>
     <li><a href="#gallery" onclick="closeNav()">Galleria</a></li>
     <li><a href="#ambiente" onclick="closeNav()">Il Locale</a></li>
-    <li><a href="#contatti" onclick="closeNav()">Contatti</a></li>
-    <li><a href="tel:+390000000000" class="nav-cta" onclick="closeNav()">Prenota</a></li>
+    <li><a href="#recensioni" onclick="closeNav()">Recensioni</a></li>
+    <li><a href="tel:+390669311025" class="nav-cta" onclick="closeNav()">Prenota</a></li>
   </ul>
 </nav>
 
@@ -407,28 +263,41 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-logo-text">
-      <span class="hl-eyebrow">Ristorante · Roma</span>
-      <span class="hl-name">L'Ora</span>
-      <span class="hl-di">di</span>
-      <span class="hl-cena">Cena</span>
-      <div class="hl-rule"></div>
-    </div>
-    <p class="hero-tagline">Pinsa Romana &nbsp;·&nbsp; Menù No Stop &nbsp;·&nbsp; Ogni Sera</p>
+    <p class="hero-eyebrow">Pinseria &amp; Bisteccheria · Roma</p>
+    <h1>
+      <span class="hero-name">L'Ora</span>
+      <span class="hero-di">di</span>
+      <span class="hero-cena">Cena</span>
+    </h1>
+    <div class="hero-rule"></div>
+    <p class="hero-tagline">Pinsa Romana Artigianale &nbsp;·&nbsp; Menù No Stop &nbsp;·&nbsp; Ogni Sera</p>
     <div class="hero-btns">
       <a href="#menu" class="btn-red">Scopri il Menù</a>
       <a href="#contatti" class="btn-ghost">Prenota un Tavolo</a>
     </div>
   </div>
-  <div class="scroll-hint">Scorri</div>
+  <div class="scroll-hint">
+    <span>Scorri</span>
+    <div class="scroll-line"></div>
+  </div>
 </section>
 
 <!-- STRIP -->
-<div class="strip">
-  <div class="strip-item">Menù No Stop a prezzo fisso</div>
-  <div class="strip-item">Pinsa Romana Artigianale</div>
-  <div class="strip-item">Antipasti · Primi · Dolci</div>
-  <div class="strip-item">Terrazza Esterna</div>
+<div class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <span class="strip-item"><span class="strip-dot"></span>Menù No Stop a prezzo fisso</span>
+    <span class="strip-item"><span class="strip-dot"></span>Pinsa Romana Artigianale</span>
+    <span class="strip-item"><span class="strip-dot"></span>Antipasti · Primi · Dolci</span>
+    <span class="strip-item"><span class="strip-dot"></span>Terrazza Esterna</span>
+    <span class="strip-item"><span class="strip-dot"></span>Via Flavio Stilicone 125 · Roma</span>
+    <span class="strip-item"><span class="strip-dot"></span>Bambini fino a 5 anni gratis</span>
+    <span class="strip-item"><span class="strip-dot"></span>Menù No Stop a prezzo fisso</span>
+    <span class="strip-item"><span class="strip-dot"></span>Pinsa Romana Artigianale</span>
+    <span class="strip-item"><span class="strip-dot"></span>Antipasti · Primi · Dolci</span>
+    <span class="strip-item"><span class="strip-dot"></span>Terrazza Esterna</span>
+    <span class="strip-item"><span class="strip-dot"></span>Via Flavio Stilicone 125 · Roma</span>
+    <span class="strip-item"><span class="strip-dot"></span>Bambini fino a 5 anni gratis</span>
+  </div>
 </div>
 
 <!-- MENU -->
@@ -436,7 +305,7 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
   <div class="menu-inner">
     <div class="menu-top">
       <div class="menu-img reveal">
-        <img src="SnapInsta.to_621728564_18071975825109416_5990080329249826098_n.jpg" alt="La nostra pinsa"/>
+        <img src="SnapInsta.to_621728564_18071975825109416_5990080329249826098_n.jpg" alt="La nostra pinsa artigianale" loading="lazy"/>
       </div>
       <div class="reveal">
         <span class="section-label">Il nostro menù</span>
@@ -463,7 +332,7 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
           <li>Tagliere salumi misti</li>
           <li>Stracciatella con noci e miele</li>
           <li>Ciccioli croccanti</li>
-          <li>Pane di Ricco</li>
+          <li>Supplì e pizzottelle fritte</li>
           <li>Patatine fritte</li>
         </ul>
       </div>
@@ -482,14 +351,14 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
       </div>
       <div class="mcard reveal">
         <div class="mcard-num">03</div>
-        <h4>Primi &amp; Secondi</h4>
+        <h4>Bisteccheria &amp; Primi</h4>
         <ul>
           <li>Carbonara della tradizione</li>
           <li>Cacio e pepe al tartufo</li>
           <li>Amatriciana &amp; Gricia</li>
           <li>Hamburger di bovino</li>
           <li>Salsiccia alla brace</li>
-          <li>Tagliata con rucola</li>
+          <li>Arrosticini &amp; Tagliata</li>
         </ul>
       </div>
     </div>
@@ -504,11 +373,11 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
       <h2 class="section-title">Dal forno al tavolo.</h2>
     </div>
     <div class="gallery-grid">
-      <div class="gi ga"><img src="SnapInsta.to_622101914_18089048440851772_5691392878359278602_n.jpg" alt="Tagliere"/></div>
-      <div class="gi gb"><img src="SnapInsta.to_619606012_18091097860990790_1677370241987823720_n.jpg" alt="Carbonara"/></div>
-      <div class="gi gc"><img src="SnapInsta.to_628095169_18385405504158973_6050244939950744544_n.jpg" alt="Pinsa salmone"/></div>
-      <div class="gi gd"><img src="SnapInsta.to_634486484_18448960318109075_6697321687013077237_n.jpg" alt="Pinsa funghi"/></div>
-      <div class="gi ge"><img src="SnapInsta.to_620411737_18005126396693275_4928049283162309398_n.jpg" alt="Pinse varie"/></div>
+      <div class="gi ga"><img src="SnapInsta.to_622101914_18089048440851772_5691392878359278602_n.jpg" alt="Tagliere" loading="lazy"/></div>
+      <div class="gi gb"><img src="SnapInsta.to_619606012_18091097860990790_1677370241987823720_n.jpg" alt="Carbonara" loading="lazy"/></div>
+      <div class="gi gc"><img src="SnapInsta.to_628095169_18385405504158973_6050244939950744544_n.jpg" alt="Pinsa salmone" loading="lazy"/></div>
+      <div class="gi gd"><img src="SnapInsta.to_634486484_18448960318109075_6697321687013077237_n.jpg" alt="Pinsa funghi" loading="lazy"/></div>
+      <div class="gi ge"><img src="SnapInsta.to_620411737_18005126396693275_4928049283162309398_n.jpg" alt="Pinse varie" loading="lazy"/></div>
     </div>
   </div>
 </section>
@@ -517,28 +386,19 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
 <section class="ambient-section" id="ambiente">
   <div class="ambient-inner">
     <div class="ambient-imgs reveal">
-      <div class="ai-big"><img src="SnapInsta.to_624916965_18189985300351770_6142185111547906757_n (1).jpg" alt="Sala interna"/></div>
-      <div class="ai-sm"><img src="SnapInsta.to_624929077_18328444336300352_1077775716647724863_n.jpg" alt="Terrazza"/></div>
-      <div class="ai-sm"><img src="SnapInsta.to_99423868_262733531591654_3788402390500114432_n.jpg" alt="Il locale"/></div>
+      <div class="ai-big"><img src="SnapInsta.to_624916965_18189985300351770_6142185111547906757_n (1).jpg" alt="Sala interna" loading="lazy"/></div>
+      <div class="ai-sm"><img src="SnapInsta.to_624929077_18328444336300352_1077775716647724863_n.jpg" alt="Terrazza esterna" loading="lazy"/></div>
+      <div class="ai-sm"><img src="SnapInsta.to_99423868_262733531591654_3788402390500114432_n.jpg" alt="Il locale" loading="lazy"/></div>
     </div>
     <div class="ambient-text reveal">
       <span class="section-label">Il locale</span>
       <h2 class="section-title">Un posto dove <em>stare bene.</em></h2>
-      <p>Sala interna accogliente con la lavagna dei menù, l'orologio romano che segna sempre l'ora giusta e una terrazza esterna per le serate all'aperto.</p>
-      <p>Per famiglie, coppie, comitive — L'Ora di Cena è il posto dove si torna sempre volentieri.</p>
+      <p>Siamo nell'area pedonale di Via Flavio Stilicone, nel cuore del quartiere Tuscolano. Sala interna accogliente, moderna e luminosa, con terrazza esterna per le serate all'aperto.</p>
+      <p>Per famiglie, coppie, comitive — L'Ora di Cena è il posto dove si torna sempre volentieri. Metro A Lucio Sestio a soli 158 metri.</p>
       <div class="perks">
-        <div class="perk">
-          <span class="perk-icon">💰</span>
-          <div class="perk-text"><h5>Prezzi onesti</h5><p>€15 a persona, tutto incluso. Zero sorprese nel conto.</p></div>
-        </div>
-        <div class="perk">
-          <span class="perk-icon">🍕</span>
-          <div class="perk-text"><h5>Pinsa artigianale</h5><p>Impasto a lunga lievitazione, leggero e digeribile.</p></div>
-        </div>
-        <div class="perk">
-          <span class="perk-icon">🌿</span>
-          <div class="perk-text"><h5>Terrazza esterna</h5><p>Cena all'aperto sul viale alberato, estate e primavera.</p></div>
-        </div>
+        <div class="perk"><span class="perk-icon">💰</span><div class="perk-text"><h5>Prezzi onesti</h5><p>€15 a persona, tutto incluso. Zero sorprese nel conto.</p></div></div>
+        <div class="perk"><span class="perk-icon">🍕</span><div class="perk-text"><h5>Pinsa artigianale</h5><p>Impasto a lunga lievitazione, leggero e digeribile.</p></div></div>
+        <div class="perk"><span class="perk-icon">🌿</span><div class="perk-text"><h5>Zona pedonale</h5><p>Terrazza esterna tranquilla, perfetta per bambini e famiglie.</p></div></div>
       </div>
     </div>
   </div>
@@ -548,6 +408,60 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
 <section class="quote-section">
   <blockquote>"Non è solo cena — è il momento in cui il tempo si ferma e il sapore comincia."</blockquote>
   <cite>— L'Ora di Cena, Roma</cite>
+</section>
+
+<!-- RECENSIONI -->
+<section class="reviews-section" id="recensioni">
+  <div class="reviews-inner">
+    <div class="reviews-head reveal">
+      <div>
+        <span class="section-label">Cosa dicono di noi</span>
+        <h2 class="section-title" style="margin-bottom:0.5rem">Le <em>recensioni.</em></h2>
+        <div class="rating-badge">
+          <div class="rating-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star" style="opacity:0.35">★</span>
+          </div>
+          <span class="rating-num">4.1</span>
+          <span class="rating-count">su Google Maps</span>
+        </div>
+      </div>
+      <div class="reviews-btns">
+        <a href="https://maps.app.goo.gl/jDx26AqAKwowQU9d6" target="_blank" rel="noopener" class="btn-review-read">
+          📖 &nbsp;Leggi tutte
+        </a>
+        <a href="https://search.google.com/local/writereview?placeid=ChIJhfovL9iJJBMRBfR6v0skZT4" target="_blank" rel="noopener" class="btn-review-write">
+          ✏️ &nbsp;Scrivi una recensione
+        </a>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="rcard reveal">
+        <div class="rcard-header">
+          <div class="rcard-avatar">G</div>
+          <div><div class="rcard-name">Guido F.</div><div class="rcard-date">Google Maps</div></div>
+        </div>
+        <div class="rcard-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="rcard-text">Serata in famiglia, menù fisso no stop pinsa ottimo. La carne con bevande no stop è da provare. Personale giovane, simpatico e disponibile. Un posto da tenere a mente!</p>
+      </div>
+      <div class="rcard reveal">
+        <div class="rcard-header">
+          <div class="rcard-avatar">S</div>
+          <div><div class="rcard-name">Simona B.</div><div class="rcard-date">Google Maps</div></div>
+        </div>
+        <div class="rcard-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="rcard-text">Pulito, luminoso e molto accogliente. Il personale solare e disponibile e la pinsa buonissima e digeribile. Location moderna, fatta bene. Ci torneremo sicuramente!</p>
+      </div>
+      <div class="rcard reveal">
+        <div class="rcard-header">
+          <div class="rcard-avatar">M</div>
+          <div><div class="rcard-name">Maria R.</div><div class="rcard-date">TripAdvisor</div></div>
+        </div>
+        <div class="rcard-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="rcard-text">Complimenti per tutto: buonissimo. Il cameriere gentilissimo e il proprietario disponibile. Ottima formula all you can eat. La mia famiglia è rimasta contentissima della scelta!</p>
+      </div>
+    </div>
+    <p class="reviews-source">Recensioni da Google Maps &amp; TripAdvisor</p>
+  </div>
 </section>
 
 <!-- CONTATTI -->
@@ -562,54 +476,75 @@ footer a{color:rgba(200,64,42,0.6);text-decoration:none;}
         <div class="c-brand-logo">
           <a href="#" class="logo-text">
             <span class="l-top">L'ora</span>
-            <span class="l-main">di <span>Cena</span></span>
+            <span class="l-main">di<span class="l-di">·</span>Cena</span>
           </a>
         </div>
-        <p>Ristorante con menù No Stop. Pinse illimitate, primi della tradizione e taglieri generosi a prezzo fisso, ogni sera.</p>
+        <p>Pinseria, Bisteccheria e non solo. Menù No Stop a prezzo fisso, pinse illimitate e bisteccheria della tradizione. Ogni sera in zona pedonale a Roma.</p>
       </div>
       <div class="c-col reveal">
         <h4>Informazioni</h4>
         <ul class="c-list">
-          <li><span>📍</span><span>Roma, Lazio — Italia</span></li>
-          <li><span>📞</span><span><a href="tel:+390000000000">Chiama per prenotare</a></span></li>
-          <li><span>📷</span><span><a href="https://www.instagram.com" target="_blank" rel="noopener">@loradicena</a></span></li>
-          <li><span>🗺</span><span><a href="https://maps.app.goo.gl/AMKAv5CXJKBZFCGo7" target="_blank" rel="noopener">Apri su Google Maps</a></span></li>
+          <li><span class="c-icon">📍</span><span>Via Flavio Stilicone 125<br/>00175 Roma (RM)</span></li>
+          <li><span class="c-icon">📞</span><span><a href="tel:+390669311025">06 693 11025</a><br/><a href="tel:+393927043334">392 704 3334</a></span></li>
+          <li><span class="c-icon">📷</span><span><a href="https://www.instagram.com/loradicena/" target="_blank" rel="noopener">@loradicena</a></span></li>
+          <li><span class="c-icon">🚇</span><span>Metro A — Lucio Sestio (158m)</span></li>
+          <li><span class="c-icon">🗺</span><span><a href="https://maps.app.goo.gl/jDx26AqAKwowQU9d6" target="_blank" rel="noopener">Apri su Google Maps</a></span></li>
         </ul>
       </div>
       <div class="c-col reveal">
         <h4>Orari</h4>
         <table class="orari-tbl">
-          <tr class="chiuso"><td>Lunedì</td><td>Chiuso</td></tr>
-          <tr><td>Martedì</td><td>19:00–23:00</td></tr>
-          <tr><td>Mercoledì</td><td>19:00–23:00</td></tr>
-          <tr><td>Giovedì</td><td>19:00–23:00</td></tr>
-          <tr><td>Venerdì</td><td>19:00–23:30</td></tr>
-          <tr><td>Sabato</td><td>12:30–15:00 / 19:00–23:30</td></tr>
-          <tr><td>Domenica</td><td>12:30–15:00 / 19:00–23:00</td></tr>
+          <tr><td>Lunedì</td><td>20:00–23:15</td></tr>
+          <tr><td>Martedì</td><td>20:00–23:15</td></tr>
+          <tr><td>Mercoledì</td><td>20:00–23:15</td></tr>
+          <tr><td>Giovedì</td><td>20:00–23:15</td></tr>
+          <tr><td>Venerdì</td><td>20:00–23:15</td></tr>
+          <tr><td>Sabato</td><td>20:00–23:15</td></tr>
+          <tr><td>Domenica</td><td>20:00–23:15</td></tr>
         </table>
-        <p style="margin-top:0.8rem;font-size:0.75rem;color:rgba(240,234,216,0.22);">* Orari indicativi — verifica sempre</p>
+        <p class="orari-note">* Verifica sempre gli orari aggiornati</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- MAPPA -->
+<div class="map-section">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.8!2d12.5591528!3d41.8603167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132589d8af2ffa85%3A0x3e65242bf77af405!2sL&#39;Ora%20di%20Cena!5e0!3m2!1sit!2sit!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="L'Ora di Cena su Google Maps"></iframe>
+  <div class="map-overlay">
+    <a href="https://maps.app.goo.gl/jDx26AqAKwowQU9d6" target="_blank" rel="noopener" class="map-cta">Apri su Google Maps</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
-  <p>© 2025 L'Ora di Cena · Roma · <a href="https://maps.app.goo.gl/AMKAv5CXJKBZFCGo7" target="_blank" rel="noopener">Google Maps</a></p>
+  <p>© 2025 L'Ora di Cena &nbsp;·&nbsp; Via Flavio Stilicone 125, Roma &nbsp;·&nbsp; <a href="tel:+390669311025">06 693 11025</a></p>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/loradicena/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://maps.app.goo.gl/jDx26AqAKwowQU9d6" target="_blank" rel="noopener">Google Maps</a>
+    <a href="https://www.tripadvisor.it/Restaurant_Review-g187791-d12492243-Reviews-L_Ora_di_Cena-Rome_Lazio.html" target="_blank" rel="noopener">TripAdvisor</a>
+  </div>
 </footer>
 
 <script>
 const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);});
 const ham=document.getElementById('ham');
 const nl=document.getElementById('navlinks');
-ham.addEventListener('click',()=>nl.classList.toggle('open'));
-function closeNav(){nl.classList.remove('open');}
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+ham.addEventListener('click',()=>{
+  const open=nl.classList.toggle('open');
+  ham.classList.toggle('active',open);
+  document.body.style.overflow=open?'hidden':'';
+});
+function closeNav(){
+  nl.classList.remove('open');
+  ham.classList.remove('active');
+  document.body.style.overflow='';
+}
 const revs=document.querySelectorAll('.reveal');
 const io=new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{
-    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*100);io.unobserve(e.target);}
-  });
-},{threshold:0.1});
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*80);io.unobserve(e.target);}});
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
 revs.forEach(r=>io.observe(r));
 </script>
 </body>
